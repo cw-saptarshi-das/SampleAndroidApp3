@@ -38,7 +38,7 @@ public class RecyclerCardModelAdapter extends RecyclerView.Adapter<RecyclerCardM
         holder.additionalCarDetails.setText(carData.get(position).getKm() + " | " + carData.get(position).fuel + " | " + carData.get(position).transmission + " | " + carData.get(position).cityName);
         holder.carPrice.setText(carData.get(position).getPrice());
         String emiText = carData.get(position).emiText;
-        if (emiText != null && !emiText.trim().isEmpty()) {
+        if (emiText != null && !emiText.trim().isEmpty() && holder.emiPrice.getText().toString().isEmpty()) {
             holder.emiPrice.setText(holder.emiPrice.getText() + emiText.substring(emiText.indexOf("at") + 2));
         }
     }

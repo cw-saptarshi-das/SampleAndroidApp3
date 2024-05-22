@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(recyclerCardModelAdapter);
 
         CarDataRequest carDataRequest = new CarDataRequest();
-        carDataRequest.setCity("2");
+        carDataRequest.setCity("1");
 
         // Observe the LiveData
         carDataViewModel.getStockDataList().observe(this, new Observer<List<StockData>>() {
