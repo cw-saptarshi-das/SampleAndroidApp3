@@ -102,8 +102,7 @@
                     android:textColor="#0288d1"
                     android:textStyle="bold"
                     android:layout_marginBottom="17dp"
-                    android:fontFamily="@font/lato"
-                    android:text="Rs. 10,299" />
+                    android:fontFamily="@font/lato" />
 
             </LinearLayout>
 

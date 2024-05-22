@@ -14,4 +14,8 @@ public class StockData {
     public String getPrice() {
         return "Rs. " + price;
     }
+
+    public String getKm() {
+        return km + " km";
+    }
 }

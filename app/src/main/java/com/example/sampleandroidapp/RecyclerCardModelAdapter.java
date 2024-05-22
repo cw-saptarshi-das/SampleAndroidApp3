@@ -35,9 +35,12 @@ public class RecyclerCardModelAdapter extends RecyclerView.Adapter<RecyclerCardM
     public void onBindViewHolder(@NonNull CardViewHolder holder, int position) {
         Glide.with(context).load(carData.get(position).imageUrl).into(holder.carImg);
         holder.carTitle.setText(carData.get(position).makeYear + " " + carData.get(position).carName);
-        holder.additionalCarDetails.setText(carData.get(position).km + " | " + carData.get(position).fuel + " | " + carData.get(position).transmission + " | " + carData.get(position).cityName);
+        holder.additionalCarDetails.setText(carData.get(position).getKm() + " | " + carData.get(position).fuel + " | " + carData.get(position).transmission + " | " + carData.get(position).cityName);
         holder.carPrice.setText(carData.get(position).getPrice());
-        holder.emiPrice.setText(carData.get(position).emiText);
+        String emiText = carData.get(position).emiText;
+        if (emiText != null && !emiText.trim().isEmpty()) {
+            holder.emiPrice.setText(holder.emiPrice.getText() + emiText.substring(emiText.indexOf("at") + 2));
+        }
     }
 
     @Override
