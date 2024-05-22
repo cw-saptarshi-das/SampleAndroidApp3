@@ -2,6 +2,7 @@ package com.example.sampleandroidapp.viewmodel;
 
 import android.util.Log;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
@@ -23,24 +24,20 @@ import retrofit2.Response;
 
 public class CarDataViewModel extends ViewModel {
 
-    private MutableLiveData<CarDataRequest> carData;
+    private MutableLiveData<List<StockData>> stockDataList;
     public CarDataViewModel() {
-        carData = new MutableLiveData<>();
+        stockDataList = new MutableLiveData<>();
     }
 
-    public ArrayList<CardModel> usedCarsListApiCall(CarDataRequest carDataRequest) {
-        ArrayList<CardModel> cardData = new ArrayList<>();
-        ModelMapper modelMapper = new ModelMapper();
+    public void fetchUsedCarList(CarDataRequest carDataRequest) {
         APIService apiService = CarwaleHostServiceInstance.getRetrofitClient().create(APIService.class);
+        ArrayList<StockData> stockData = new ArrayList<>();
         Call<CarDataResponse> call = apiService.fetchUsedCarListings(carDataRequest);
         call.enqueue(new Callback<CarDataResponse>() {
             @Override
             public void onResponse(Call<CarDataResponse> call, Response<CarDataResponse> response) {
                 if (response.isSuccessful()) {
-                    List<StockData> stockData = response.body().stocks;
-                    for (int i = 0; i < stockData.size(); i++) {
-                        cardData.set(i, modelMapper.map(stockData.get(i), CardModel.class));
-                    }
+                    stockDataList.setValue(response.body().stocks);
                 } else {
                     // Handle the error
                     Log.e("API Error", "Error code: " + response.code());
@@ -52,6 +49,8 @@ public class CarDataViewModel extends ViewModel {
 
             }
         });
-        return cardData;
+    }
+    public LiveData<List<StockData>> getStockDataList() {
+        return stockDataList;
     }
 }

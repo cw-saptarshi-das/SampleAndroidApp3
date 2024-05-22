@@ -11,16 +11,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.sampleandroidapp.model.StockData;
 
 import java.util.ArrayList;
 
 public class RecyclerCardModelAdapter extends RecyclerView.Adapter<RecyclerCardModelAdapter.CardViewHolder> {
     Context context;
-    ArrayList<CardModel> cardModel;
+    ArrayList<StockData> carData;
 
-    RecyclerCardModelAdapter(Context context, ArrayList<CardModel> cardModel) {
+    RecyclerCardModelAdapter(Context context, ArrayList<StockData> carData) {
         this.context = context;
-        this.cardModel = cardModel;
+        this.carData = carData;
     }
     @NonNull
     @Override
@@ -32,16 +33,16 @@ public class RecyclerCardModelAdapter extends RecyclerView.Adapter<RecyclerCardM
 
     @Override
     public void onBindViewHolder(@NonNull CardViewHolder holder, int position) {
-        Glide.with(context).load(cardModel.get(position).imageUrl).into(holder.carImg);
-        holder.carTitle.setText(cardModel.get(position).makeYear + " " + cardModel.get(position).carName);
-        holder.additionalCarDetails.setText(cardModel.get(position).km + " | " + cardModel.get(position).fuel + " | " + cardModel.get(position).transmission + " | " + cardModel.get(position).cityName);
-        holder.carPrice.setText(cardModel.get(position).getPrice());
-        holder.emiPrice.setText(cardModel.get(position).emiText);
+        Glide.with(context).load(carData.get(position).imageUrl).into(holder.carImg);
+        holder.carTitle.setText(carData.get(position).makeYear + " " + carData.get(position).carName);
+        holder.additionalCarDetails.setText(carData.get(position).km + " | " + carData.get(position).fuel + " | " + carData.get(position).transmission + " | " + carData.get(position).cityName);
+        holder.carPrice.setText(carData.get(position).getPrice());
+        holder.emiPrice.setText(carData.get(position).emiText);
     }
 
     @Override
     public int getItemCount() {
-        return cardModel.size();
+        return carData.size();
     }
 
     public class CardViewHolder extends RecyclerView.ViewHolder{

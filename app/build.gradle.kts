@@ -32,13 +32,11 @@ android {
 }
 
 dependencies {
-    val lifecycleVersion = "2.8.0"
+    val lifecycleVersion = "2.7.0"
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel:$lifecycleVersion")
     // LiveData
     implementation("androidx.lifecycle:lifecycle-livedata:$lifecycleVersion")
-    // Saved state module for ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycleVersion")
     implementation("com.google.code.gson:gson:2.11.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.12.0")
