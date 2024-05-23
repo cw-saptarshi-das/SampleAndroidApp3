@@ -23,11 +23,10 @@
                 android:id="@+id/listingsCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="5372 "
                 android:fontFamily="@font/lato"
+                android:textStyle="bold"
                 android:textColor="#333333"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/listingTitle"
@@ -43,7 +42,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato"
-                android:text="Navi Mumbai"
                 android:textColor="#333333"
                 android:textSize="15sp" />
         </LinearLayout>
@@ -51,6 +49,7 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/stockCard"
             android:layout_width="match_parent"
+            android:layout_gravity="center_horizontal"
             android:layout_height="wrap_content">
         </androidx.recyclerview.widget.RecyclerView>
 

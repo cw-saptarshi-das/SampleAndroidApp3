@@ -13,13 +13,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.sampleandroidapp.model.StockData;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class RecyclerCardModelAdapter extends RecyclerView.Adapter<RecyclerCardModelAdapter.CardViewHolder> {
     Context context;
-    ArrayList<StockData> carData;
+    List<StockData> carData;
 
-    RecyclerCardModelAdapter(Context context, ArrayList<StockData> carData) {
+    RecyclerCardModelAdapter(Context context, List<StockData> carData) {
         this.context = context;
         this.carData = carData;
     }
@@ -33,7 +33,12 @@ public class RecyclerCardModelAdapter extends RecyclerView.Adapter<RecyclerCardM
 
     @Override
     public void onBindViewHolder(@NonNull CardViewHolder holder, int position) {
-        Glide.with(context).load(carData.get(position).imageUrl).into(holder.carImg);
+        if (carData.get(position).imageUrl.isEmpty()) {
+            holder.carImg.setImageResource(R.drawable.no_car_image_with_text);
+        }
+        else {
+            Glide.with(context).load(carData.get(position).imageUrl).into(holder.carImg);
+        }
         holder.carTitle.setText(carData.get(position).makeYear + " " + carData.get(position).carName);
         holder.additionalCarDetails.setText(carData.get(position).getKm() + " | " + carData.get(position).fuel + " | " + carData.get(position).transmission + " | " + carData.get(position).cityName);
         holder.carPrice.setText(carData.get(position).getPrice());
@@ -49,7 +54,7 @@ public class RecyclerCardModelAdapter extends RecyclerView.Adapter<RecyclerCardM
     }
 
     public class CardViewHolder extends RecyclerView.ViewHolder{
-        TextView carTitle, additionalCarDetails, carPrice, emiPrice;
+        TextView carTitle, additionalCarDetails, carPrice, emiPrice, stockCount, cityName;
         ImageView carImg;
         public CardViewHolder(@NonNull View itemView) {
             super(itemView);

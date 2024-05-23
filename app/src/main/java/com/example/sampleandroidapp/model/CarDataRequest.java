@@ -3,6 +3,10 @@ package com.example.sampleandroidapp.model;
 import java.util.List;
 
 public class CarDataRequest {
+
+    public CarDataRequest() {
+        setPn("1");
+    }
     String make;
     String modelName;
     String car;
@@ -38,6 +42,7 @@ public class CarDataRequest {
     int stockFetched;
     String ExcludeStocks;
     int dealerId;
+    boolean shouldFetchNearbyCars;
     List<String> deferredDealers;
     String price;
     String pc;

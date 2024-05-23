@@ -10,6 +10,7 @@ public class StockData {
     public String cityName;
     public String price;
     public String emiText;
+    public int stockCount;
 
     public String getPrice() {
         return "Rs. " + price;

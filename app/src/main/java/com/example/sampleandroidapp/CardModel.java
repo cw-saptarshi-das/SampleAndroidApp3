@@ -11,6 +11,8 @@ public class CardModel {
     public String price;
     public String emiText;
 
+    public int stockCount;
+
     public String getPrice() {
         return "Rs. " + price;
     }
